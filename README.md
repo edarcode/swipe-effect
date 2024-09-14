@@ -1,1 +1,1 @@
-# swipe-effect
+# Efecto deslizante

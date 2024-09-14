@@ -1,0 +1,26 @@
+:root {
+  /* Dark mode*/
+  --bg: #1c1c1e; /* Fondo Principal */
+  --surf: #2c2c2e; /* Superficie */
+  --pri: #bb86fc; /* Primario */
+  --sec: #03dac6; /* Secundario */
+  --title: #e0e0e0; /*Título */
+  --para: #c0c0c0; /* Párrafo */
+  --hl: #ffb300; /* Resaltado */
+  --border: #3a3a3c; /* Borde */
+
+  /* Light mode */
+  --l-bg: #ffffff; /* Fondo Principal */
+  --l-surf: #f2f2f2; /* Superficie */
+  --l-pri: #6200ee; /* Primario */
+  --l-sec: #018786; /* Secundario */
+  --l-title: #1c1c1e; /* Título */
+  --l-para: #3a3a3c; /* Párrafo */
+  --l-hl: #ffb300; /* Resaltado */
+  --l-border: #d1d1d6; /* Borde */
+
+  /* Common */
+  --blue: #0066cc;
+  --red: #cd231d;
+  --green: #8c9900;
+}

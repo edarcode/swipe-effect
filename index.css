@@ -1,0 +1,33 @@
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--para);
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--title);
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--l-bg);
+    color: var(--l-para);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--l-title);
+  }
+}
