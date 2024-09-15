@@ -31,3 +31,52 @@ h6 {
     color: var(--l-title);
   }
 }
+
+.iphone {
+  width: 320px;
+  height: 640px;
+  background: url("/assets/cell-frame.webp") no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 0 8px rgba(0 0 0 / 0.2));
+  padding: 26px;
+
+  display: grid;
+  grid-template-rows: 10% 1fr 10%;
+
+  header {
+    border-radius: 28px 28px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 16px;
+  }
+
+  section {
+    position: relative;
+
+    .wrapper {
+      position: relative;
+      height: 100%;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+
+      span {
+        position: absolute;
+        right: var(--sm);
+        bottom: var(--sm);
+        font-weight: bold;
+        color: white;
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--md);
+    border-radius: 0 0 28px 28px;
+  }
+}
