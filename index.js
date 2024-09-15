@@ -2,6 +2,9 @@ let isAnimate = false;
 let deltaX = 0;
 const BREAKPOINT = 75;
 
+document.addEventListener("mousedown", startDrag);
+document.addEventListener("touchstart", startDrag, { passive: true });
+
 function startDrag(e) {
   if (isAnimate) return;
 
@@ -67,6 +70,3 @@ function startDrag(e) {
     });
   }
 }
-
-document.addEventListener("mousedown", startDrag);
-document.addEventListener("touchstart", startDrag, { passive: true });
