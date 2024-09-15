@@ -26,12 +26,13 @@ function startDrag(e) {
     const deg = deltaX / 10;
     currentCard.style.transform = `translateX(${deltaX}px) rotate(${deg}deg)`;
     currentCard.style.cursor = "grabbing";
+
     const choiceElement =
       deltaX > 0
         ? currentCard.querySelector(".choice.like")
         : currentCard.querySelector(".choice.nope");
-    const totalOpacity = Math.abs(deltaX) / 100;
-    choiceElement.style.opacity = totalOpacity;
+
+    choiceElement.style.opacity = Math.abs(deltaX) / 100;
   }
 
   function endMovement(e) {
@@ -51,10 +52,9 @@ function startDrag(e) {
     } else {
       currentCard.classList.remove("go_right", "go_left");
       currentCard.classList.add("reset");
+
       const choiceElements = currentCard.querySelectorAll(".choice");
-      choiceElements.forEach((choice) => {
-        choice.style.opacity = 0;
-      });
+      choiceElements.forEach((choice) => (choice.style.opacity = 0));
     }
 
     currentCard.addEventListener("transitionend", () => {
@@ -64,6 +64,9 @@ function startDrag(e) {
       deltaX = 0;
       isAnimate = false;
     });
+
+    const choiceElements = currentCard.querySelectorAll(".choice");
+    choiceElements.forEach((choice) => (choice.style.opacity = 0));
   }
 }
 
