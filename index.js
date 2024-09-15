@@ -4,6 +4,7 @@ const BREAKPOINT = 75;
 
 function startDrag(e) {
   if (isAnimate) return;
+
   const currentCard = e.target.closest("article");
 
   if (!currentCard) return;
@@ -20,26 +21,26 @@ function startDrag(e) {
     const currentPos = e.pageX ?? e.touches[0].pageX;
     deltaX = currentPos - startPos;
 
-    if (deltaX == 0) return;
+    if (deltaX === 0) return;
 
     isAnimate = true;
     const deg = deltaX / 10;
     currentCard.style.transform = `translateX(${deltaX}px) rotate(${deg}deg)`;
     currentCard.style.cursor = "grabbing";
 
-    const choiceElement =
-      deltaX > 0
-        ? currentCard.querySelector(".choice.like")
-        : currentCard.querySelector(".choice.nope");
+    // const choiceElement =
+    //   deltaX > 0
+    //     ? currentCard.querySelector(".choice.like")
+    //     : currentCard.querySelector(".choice.nope");
 
-    choiceElement.style.opacity = Math.abs(deltaX) / 100;
+    // choiceElement.style.opacity = Math.abs(deltaX) / 100;
   }
 
   function endMovement(e) {
     document.removeEventListener("mousemove", moving);
-    document.removeEventListener("mouseup", endMovement);
-
     document.removeEventListener("touchmove", moving, { passive: true });
+
+    document.removeEventListener("mouseup", endMovement);
     document.removeEventListener("touchend", endMovement, { passive: true });
 
     if (Math.abs(deltaX) >= BREAKPOINT) {
@@ -53,8 +54,8 @@ function startDrag(e) {
       currentCard.classList.remove("go_right", "go_left");
       currentCard.classList.add("reset");
 
-      const choiceElements = currentCard.querySelectorAll(".choice");
-      choiceElements.forEach((choice) => (choice.style.opacity = 0));
+      // const choiceElements = currentCard.querySelectorAll(".choice");
+      // choiceElements.forEach((choice) => (choice.style.opacity = 0));
     }
 
     currentCard.addEventListener("transitionend", () => {
@@ -64,9 +65,6 @@ function startDrag(e) {
       deltaX = 0;
       isAnimate = false;
     });
-
-    const choiceElements = currentCard.querySelectorAll(".choice");
-    choiceElements.forEach((choice) => (choice.style.opacity = 0));
   }
 }
 
