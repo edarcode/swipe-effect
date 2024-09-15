@@ -1,5 +1,6 @@
 let isAnimate = false;
 let deltaX = 0;
+const BREAKPOINT = 75;
 
 function startDrag(e) {
   if (isAnimate) return;
@@ -31,10 +32,24 @@ function startDrag(e) {
     document.removeEventListener("touchmove", moving, { passive: true });
     document.removeEventListener("touchend", endMovement, { passive: true });
 
-    isAnimate = false;
-    deltaX = 0;
-    currentCard.style.transform = `none`;
-    currentCard.style.cursor = "grab";
+    if (Math.abs(deltaX) >= BREAKPOINT) {
+      const isMovingRight = deltaX >= 0;
+      currentCard.classList.add(isMovingRight ? "go_right" : "go_left");
+
+      currentCard.addEventListener("transitionend", () => {
+        currentCard.remove();
+      });
+    } else {
+      currentCard.classList.remove("go_right", "go_left");
+      currentCard.classList.add("reset");
+    }
+
+    currentCard.addEventListener("transitionend", () => {
+      currentCard.removeAttribute("style");
+      currentCard.classList.remove("reset");
+      deltaX = 0;
+      isAnimate = false;
+    });
   }
 }
 

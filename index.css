@@ -55,29 +55,29 @@ h6 {
     position: relative;
     overflow: hidden;
 
+    .go_left {
+      transform: translateX(-150%) rotate(-25deg) !important;
+    }
+
+    .go_right {
+      transform: translateX(150%) rotate(25deg) !important;
+    }
+
+    .go_left,
+    .go_right {
+      transition: transform 0.3s ease, rotate 0.3s ease;
+    }
+
+    .reset {
+      transition: transform 0.3s ease;
+      transform: translate(0) !important;
+    }
+
     .card {
       position: absolute;
       height: 100%;
       padding: var(--sm);
       cursor: grab;
-
-      .go_left {
-        transform: translateX(-100%) rotate(-20deg);
-      }
-
-      .go_right {
-        transform: translateX(-100%) rotate(-20deg);
-      }
-
-      .go_left,
-      .go_right {
-        transition: transform 0.3s ease rotate 0.3s ease;
-      }
-
-      .go_reset {
-        transition: transform 0.3s ease;
-        transform: translate(0);
-      }
 
       img {
         height: 100%;
