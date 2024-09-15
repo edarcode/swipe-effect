@@ -58,6 +58,7 @@ h6 {
       position: absolute;
       height: 100%;
       padding: var(--sm);
+      cursor: grab;
 
       img {
         height: 100%;

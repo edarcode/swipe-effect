@@ -24,7 +24,18 @@ function startDrag(e) {
     currentCard.style.cursor = "grabbing";
   }
 
-  function endMovement(e) {}
+  function endMovement(e) {
+    document.removeEventListener("mousemove", moving);
+    document.removeEventListener("mouseup", endMovement);
+
+    document.removeEventListener("touchmove", moving, { passive: true });
+    document.removeEventListener("touchend", endMovement, { passive: true });
+
+    isAnimate = false;
+    deltaX = 0;
+    currentCard.style.transform = `none`;
+    currentCard.style.cursor = "grab";
+  }
 }
 
 document.addEventListener("mousedown", startDrag);
