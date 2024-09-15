@@ -5,6 +5,9 @@ const BREAKPOINT = 75;
 function startDrag(e) {
   if (isAnimate) return;
   const currentCard = e.target.closest("article");
+
+  if (!currentCard) return;
+
   const startPos = e.pageX ?? e.touches[0].pageX;
 
   document.addEventListener("mousemove", moving);
@@ -23,6 +26,12 @@ function startDrag(e) {
     const deg = deltaX / 10;
     currentCard.style.transform = `translateX(${deltaX}px) rotate(${deg}deg)`;
     currentCard.style.cursor = "grabbing";
+    const choiceElement =
+      deltaX > 0
+        ? currentCard.querySelector(".choice.like")
+        : currentCard.querySelector(".choice.nope");
+    const totalOpacity = Math.abs(deltaX) / 100;
+    choiceElement.style.opacity = totalOpacity;
   }
 
   function endMovement(e) {
@@ -42,11 +51,16 @@ function startDrag(e) {
     } else {
       currentCard.classList.remove("go_right", "go_left");
       currentCard.classList.add("reset");
+      const choiceElements = currentCard.querySelectorAll(".choice");
+      choiceElements.forEach((choice) => {
+        choice.style.opacity = 0;
+      });
     }
 
     currentCard.addEventListener("transitionend", () => {
       currentCard.removeAttribute("style");
       currentCard.classList.remove("reset");
+
       deltaX = 0;
       isAnimate = false;
     });

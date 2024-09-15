@@ -112,6 +112,31 @@ h6 {
           transparent 40%
         );
       }
+
+      .choice {
+        position: absolute;
+        font-size: large;
+        font-weight: bold;
+        border-radius: var(--md);
+        padding: var(--sm);
+        border: 3px solid currentColor;
+        opacity: 0;
+        transition: opacity 0.1s ease;
+      }
+
+      .like {
+        top: var(--xl);
+        left: var(--lg);
+        color: var(--green);
+        transform: rotate(-25deg);
+      }
+
+      .nope {
+        top: var(--xl);
+        right: var(--lg);
+        color: var(--red);
+        transform: rotate(25deg);
+      }
     }
   }
 
